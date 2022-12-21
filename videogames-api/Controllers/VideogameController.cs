@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using videogames_api.Models;
 using videogames_api.Utils;
@@ -20,9 +19,9 @@ namespace videogames_api.Controllers {
             List<Videogame> videogames = new List<Videogame>();
             try {
                 videogames = _dbcontext.Videogames.Include(data => data.Genre).Include(data => data.Platforms).ToList();
-                return (IActionResult)FinalResponse.Succesful(videogames);
+                return FinalResponse.Succesful(videogames);
             } catch(Exception ex) {
-                return (IActionResult)FinalResponse.Unsuccesful(ex.Message);
+                return FinalResponse.Unsuccesful(ex.Message);
             }
         }
 
@@ -31,9 +30,9 @@ namespace videogames_api.Controllers {
             try {
                 _dbcontext.Videogames.Add(item);
                 _dbcontext.SaveChanges();
-                return (IActionResult)FinalResponse.Succesful("Videogame was created");
+                return FinalResponse.Succesful("Videogame was created");
             } catch (Exception ex) {
-                return (IActionResult)FinalResponse.Unsuccesful(ex.Message);
+                return FinalResponse.Unsuccesful(ex.Message);
             }
         }
 

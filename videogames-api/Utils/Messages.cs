@@ -4,16 +4,22 @@ using videogames_api.Models;
 namespace videogames_api.Utils {
     public class Messages : ControllerBase {
 
-        public object Succesful(List<Videogame> videogames) { 
-            return StatusCode(200, new { request_status = "unsuccessful", response =  videogames });
+        public IActionResult Succesful(List<Videogame> videogames) { 
+            return StatusCode(200, new { request_status = "successful", response =  videogames });
         }
 
-        public object Succesful(string message){
-            return StatusCode(200, new { request_status = "unsuccessful", response = message });
+        public IActionResult Succesful(List<Genre> genre)
+        {
+            return StatusCode(200, new { request_status = "successful", response = genre });
         }
 
-        public object Unsuccesful(string message) {
+        public IActionResult Succesful(string message){
+            return StatusCode(200, new { request_status = "successful", response = message });
+        }
+
+        public IActionResult Unsuccesful(string message) {
             return StatusCode(400, new { request_status = "unsuccessful", response = message });
         }
+
     }
 }
