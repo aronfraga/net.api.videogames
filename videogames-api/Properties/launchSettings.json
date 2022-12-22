@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:39140",
+      "applicationUrl": "http://localhost:17255",
       "sslPort": 0
     }
   },
@@ -15,8 +15,7 @@
       "launchBrowser": false,
       "applicationUrl": "http://localhost:5134",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "API_KEY": "86495924444f4f4ebc340686b46b25c7" // PLEASE DO NOT USE FOR PERSONAL USE
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "IIS Express": {

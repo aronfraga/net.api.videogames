@@ -8,9 +8,12 @@ namespace videogames_api.Utils {
             return StatusCode(200, new { request_status = "successful", response =  videogames });
         }
 
-        public IActionResult Succesful(List<Genre> genre)
-        {
+        public IActionResult Succesful(List<Genre> genre){
             return StatusCode(200, new { request_status = "successful", response = genre });
+        }
+
+        public IActionResult Succesful(List<Platform> platforms){
+            return StatusCode(200, new { request_status = "successful", response = platforms });
         }
 
         public IActionResult Succesful(string message){

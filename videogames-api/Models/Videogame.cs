@@ -1,27 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace videogames_api.Models;
+namespace videogames_api.Models {
+    public class Videogame {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int IdVideogame { get; set; }
+        
+        public string Name { get; set; } = null!;
+        
+        public string? Description { get; set; }
+        
+        public string? ReleaseDate { get; set; }
+        
+        public string? Image { get; set; }
+        
+        public int? Rating { get; set; }
 
-public partial class Videogame
-{
-    public int Id { get; set; }
+        public int IdPlatform { get; set; }
 
-    public string? Name { get; set; }
+        public int IdGenre { get; set; }
 
-    public string? Description { get; set; }
+        [ForeignKey("IdPlatform")]
+        public virtual Platform Platform { get; set; }
 
-    public string? ReleaseDate { get; set; }
-
-    public string? Image { get; set; }
-
-    public int? Rating { get; set; }
-
-    public int? Platforms { get; set; }
-
-    public int? Genre { get; set; }
-
-    public virtual Genre? GenreNavigation { get; set; }
-
-    public virtual Platform? PlatformsNavigation { get; set; }
+        [ForeignKey("IdGenre")]
+        public virtual Genre Genre { get; set; }
+    }
 }

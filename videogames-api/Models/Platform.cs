@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace videogames_api.Models;
+namespace videogames_api.Models {
+    public class Platform {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int IdPlatform { get; set; }
 
-public partial class Platform
-{
-    public int IdPlatforms { get; set; }
+        public string Name { get; set; } = null!;
 
-    public string? Name { get; set; }
-
-    public virtual ICollection<Videogame> Videogames { get; } = new List<Videogame>();
+        public virtual ICollection<Videogame>? Videogame { get; set; }
+    }
 }
