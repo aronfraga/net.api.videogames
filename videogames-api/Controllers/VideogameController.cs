@@ -19,9 +19,11 @@ namespace videogames_api.Controllers {
         [HttpGet]
         public IActionResult GetAllItems(){
             List<Videogame> videogames = new List<Videogame>();
+            List<VideogameGenre> videogamegenres = new List<VideogameGenre>();
             try {
-                videogames = _dbcontext.Videogames.ToList();
-                return FinalResponse.Succesful(videogames);
+                //videogames = _dbcontext.Videogames.Include(data => data.Genre).Include(data => data.Platform).ToList();
+                videogamegenres = _dbcontext.VideogameGenres.ToList();
+                return FinalResponse.Succesful(videogamegenres);
             } catch(Exception ex) {
                 return FinalResponse.Unsuccesful(ex.Message);
             }

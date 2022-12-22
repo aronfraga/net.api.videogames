@@ -22,9 +22,9 @@ namespace videogames_api.Models {
         public int IdGenre { get; set; }
 
         [ForeignKey("IdPlatform")]
-        public virtual Platform Platform { get; set; }
+        public virtual ICollection<Platform> Platform { get; set; }
 
         [ForeignKey("IdGenre")]
-        public virtual Genre Genre { get; set; }
+        public virtual ICollection<Genre> Genre { get; set; }
     }
 }
