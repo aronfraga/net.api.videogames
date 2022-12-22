@@ -16,10 +16,6 @@ namespace videogames_api.Utils {
             return StatusCode(200, new { request_status = "successful", response = platforms });
         }
 
-        public IActionResult Succesful(List<VideogameGenre> videogamegenres){
-            return StatusCode(200, new { request_status = "successful", response = videogamegenres });
-        }
-
         public IActionResult Succesful(string message){
             return StatusCode(200, new { request_status = "successful", response = message });
         }

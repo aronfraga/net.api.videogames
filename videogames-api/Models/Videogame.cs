@@ -3,6 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace videogames_api.Models {
     public class Videogame {
+
+        public Videogame() {
+            this.Genres = new HashSet<Genre>();
+            this.Platforms = new HashSet<Platform>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdVideogame { get; set; }
@@ -17,14 +23,8 @@ namespace videogames_api.Models {
         
         public int? Rating { get; set; }
 
-        public int IdPlatform { get; set; }
+        public virtual ICollection<Genre> Genres { get; set; }
 
-        public int IdGenre { get; set; }
-
-        [ForeignKey("IdPlatform")]
-        public virtual ICollection<Platform> Platform { get; set; }
-
-        [ForeignKey("IdGenre")]
-        public virtual ICollection<Genre> Genre { get; set; }
+        public virtual ICollection<Platform> Platforms { get; set; }
     }
 }

@@ -23,10 +23,10 @@ namespace videogames_api.Utils {
                 throw new ArgumentException("The property Release Date can not be empty and must be a string...");
             if (item.Rating == null || item.Rating is not int) 
                 throw new ArgumentException("The property Release Date can not be empty and must be a Number...");
-            if (item.IdPlatform == null) 
-                throw new ArgumentException("The property Platforms can not be empty and must be a id of platform...");
-            if (item.IdGenre == null) 
-                throw new ArgumentException("The property Genre can not be empty and must be a id of genre...");
+            //if (item.IdPlatform == null) 
+              //  throw new ArgumentException("The property Platforms can not be empty and must be a id of platform...");
+            //if (item.IdGenre == null) 
+              //  throw new ArgumentException("The property Genre can not be empty and must be a id of genre...");
         }
     }
 }
