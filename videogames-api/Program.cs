@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<VideogamesContext>(conection => conection.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection")));
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

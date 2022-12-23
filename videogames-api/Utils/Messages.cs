@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using videogames_api.Models;
 
 namespace videogames_api.Utils {
@@ -22,6 +23,17 @@ namespace videogames_api.Utils {
 
         public IActionResult Unsuccesful(string message) {
             return StatusCode(400, new { request_status = "unsuccessful", response = message });
+        }
+
+        internal IActionResult Succesful(Task<Videogame> videogamesEX)
+        {
+            return StatusCode(200, new { request_status = "successful", response = videogamesEX });
+            //throw new NotImplementedException();
+        }
+
+        internal IActionResult Succesful(object value)
+        {
+            return StatusCode(200, new { request_status = "successful", response = value });
         }
     }
 }

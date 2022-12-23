@@ -26,5 +26,6 @@ namespace videogames_api.Models {
         public virtual ICollection<Genre> Genres { get; set; }
 
         public virtual ICollection<Platform> Platforms { get; set; }
+
     }
 }

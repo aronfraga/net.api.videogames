@@ -3,12 +3,16 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using videogames_api.Models;
 using videogames_api.Utils;
+using videogames_api.Services;
 
 namespace videogames_api.Controllers {
+    
     [Route("[controller]")]
     [ApiController]
     public class VideogameController : ControllerBase {
+        
         public readonly VideogamesContext _dbcontext;
+        VideogameService services = new VideogameService();
         Messages FinalResponse = new Messages();
         DataChecker check = new DataChecker();
 
@@ -18,10 +22,10 @@ namespace videogames_api.Controllers {
 
         [HttpGet]
         public IActionResult GetAllItems(){
-            List<Videogame> videogames = new List<Videogame>();
             try {
-                videogames = _dbcontext.Videogames.Include(data => data.Genres).Include(data => data.Platforms).ToList();
-                return FinalResponse.Succesful(videogames);
+                var videogamesDB = _dbcontext.Videogames.Include(data => data.Genres).Include(data => data.Platforms).ToList();
+                var videogamesAPI = services.GetAllDataApi();
+                return FinalResponse.Succesful(new { videogamesDB, videogamesAPI });
             } catch(Exception ex) {
                 return FinalResponse.Unsuccesful(ex.Message);
             }
