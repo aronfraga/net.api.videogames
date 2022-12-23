@@ -20,7 +20,7 @@ namespace videogames_api.Controllers {
         public IActionResult GetAllItems(){
             List<Videogame> videogames = new List<Videogame>();
             try {
-                videogames = _dbcontext.Videogames.ToList();
+                videogames = _dbcontext.Videogames.Include(data => data.Genres).Include(data => data.Platforms).ToList();
                 return FinalResponse.Succesful(videogames);
             } catch(Exception ex) {
                 return FinalResponse.Unsuccesful(ex.Message);

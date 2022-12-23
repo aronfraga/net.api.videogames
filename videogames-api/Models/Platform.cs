@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace videogames_api.Models {
     public class Platform {
@@ -14,6 +15,7 @@ namespace videogames_api.Models {
 
         public string Name { get; set; } = null!;
 
+        [JsonIgnore]
         public virtual ICollection<Videogame> Videogames { get; set; }
     }
 }
